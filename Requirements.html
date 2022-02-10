@@ -1,0 +1,107 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=us-ascii">
+<title>Object Oriented Programming - Taxi Company</title>
+</head>
+
+<body lang=IT >
+
+<h1 align=center style='text-align:center'>Taxi Company</h1>
+
+Develop an application to manage a taxi company.<br>
+All the classes must belong to package <b>taxi</b>. Use the class <b>MainClass</b> as an example.
+
+<h2>R1. Agenzie e Taxi</h2>
+
+A taxi company is represented by the class <b>TaxiCompany</b>.
+<br/>
+
+Taxis are represented by the class <b>Taxi</b>, that provides a constructor
+accepting the unique id of the taxi.<br>
+
+The method <b >toString</b>() from class <b>Taxi</b> returns the identifier of the taxi.<br/>
+
+The method <b>addTaxi</b><b> </b>(<b>String</b><b> </b>id) from class <b>TaxiCompany</b>
+allows adding a new item to the taxi list of a company; if the identifier is 
+already present, it raises an <b>InvalidTaxiName</b> exception.<br/>
+
+When a new taxi is added to a company, it is inserted at the end of the available taxis queue.<br/>
+
+The method <b>getAvailable</b>() returns the free taxis queue.<br/>
+
+
+
+<h2>R2. Places and Passengers</h2>
+
+The class <b>Place</b> represents a real address and provides a constructor accepting as arguments the 
+actual address and the relative district (or quarter) name.  
+(E.b.: <code>"Corso Duca Abruzzi 24", "crocetta"</code>). <br>
+
+The method <b>toString</b>() returns the address of the place.<br/>
+
+The class <b>Passenger</b> represents a customer of the taxi company, it provides
+a constructor accepting as argument the place where the customer is located currently, i.e.
+where he/she should be picked up by a taxi<br/>
+
+The method <b >getPlace</b>() returns the place where the passenger is currently located.<br/>
+
+
+
+<h2>R3. Taxi Management</h2>
+
+Taxi management will be handled with a First-In-First-Out strategy by means of a queue containing the available taxis.<br/>
+
+The method <b>callTaxi</b>(<b >Passenger</b> p) assigns the first taxi in the available queue
+to the passenger passed as argument and returns the taxi itself;
+if no taxi is available then the call is lost.<br/>
+
+The method <b>getLostTrips</b>() returns the total number of lost calls.<br/>
+
+The class <b>Taxi</b> provides the methods for initiating and terminating a taxi trip:<br/>
+
+<ul>
+<li> a taxi, once assigned to a passenger, can initiate its trip by means of method 
+	<b>beginTrip</b>(<b >Place</b> dest), that accepts the destination as argument,
+	while the departure place is represented by the current passenger position.<p>
+
+<li> the trip terminates with the method <b>terminateTrip()</b> that assigns to the
+	passenger the destination place and puts the taxi at the end of the available taxis queue.
+</ul>
+
+<h2>R4. Trips</h2>
+
+The class <b>Trip</b> represents a trip completed by a taxi.
+
+The method <b>toString</b>() returns a string containing the departure and
+arrival addresses, separated by a comma (<code>','</code>).
+<br/>
+
+The method <b>getTrips</b>(<b>String</b><b> </b>id) of the class TaxiCompany returns a list
+containing all the trips completed by the taxi identified by the argument in chronological order;
+if the identifier is not present in the list of taxis working for the company
+then it raises an <b>InvalidTaxiName</b> exception.<br/> 
+
+
+<h2>R5. Statistics</h2>
+
+Class <b>TaxiCompany</b> provides two methods used to retrieve statistics:
+<br/>
+<ul>
+<li>the method <b>statsTaxi()</b> returns the list of taxis (through the interface <b>InfoI</b>) sorted
+    by decreasing number of completed trips (those for which the terminateTrip() method has been invoked);
+    in case of tie use the alphabetic order of the id.<p>
+
+<li>the method <b>statsDistricts()</b> returns the list of districts that have been destination of
+	at least a trip (through the interface InfoI), sorted by decreasing number of trips
+	having that district as the destination; in case of ties use the alphabetic order of
+	the district.
+</ul>
+
+
+<hr size=2 width="100%" align=center>
+
+</body>
+
+</html>
+
